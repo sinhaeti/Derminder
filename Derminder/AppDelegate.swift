@@ -70,22 +70,22 @@ private extension OCKStore {
                                interval: DateComponents(day: 2))
         ])
 
-        var doxylamine = OCKTask(id: "doxylamine", title: "Take Doxylamine",
+        var doxylamine = OCKTask(id: "doxylamine", title: "Apply Fluocinonide",
                              carePlanID: nil, schedule: schedule)
-        doxylamine.instructions = "Take 25mg of doxylamine when you experience nausea."
+        doxylamine.instructions = "One application to affected area(s) twice daily."
 
         let nauseaSchedule = OCKSchedule(composing: [
             OCKScheduleElement(start: beforeBreakfast, end: nil, interval: DateComponents(day: 1),
                                text: "Anytime throughout the day", targetValues: [], duration: .allDay)
             ])
 
-        var nausea = OCKTask(id: "nausea", title: "Track your nausea",
+        var nausea = OCKTask(id: "nausea", title: "Track your skin flare ups",
                              carePlanID: nil, schedule: nauseaSchedule)
         nausea.impactsAdherence = false
-        nausea.instructions = "Tap the button below anytime you experience nausea."
+        nausea.instructions = "Tap the button below anytime you experience a skin flare up."
 
         let kegelSchedule = OCKSchedule(composing: [OCKScheduleElement(start: beforeBreakfast, end: nil, interval: DateComponents(day: 2))])
-        var kegels = OCKTask(id: "kegels", title: "Kegel Exercises", carePlanID: nil, schedule: kegelSchedule)
+        var kegels = OCKTask(id: "kegels", title: "Apply Sunscreen", carePlanID: nil, schedule: kegelSchedule)
         kegels.impactsAdherence = true
         kegels.instructions = "Perform kegel exercies"
 

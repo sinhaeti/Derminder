@@ -74,15 +74,15 @@ class CareViewController: OCKDailyPageViewController {
             case .success(let tasks):
 
                 // Add a non-CareKit view into the list
-                let tipTitle = "Benefits of exercising"
-                let tipText = "Learn how activity can promote a healthy pregnancy."
+                let tipTitle = "Benefits of sunscreen"
+                let tipText = "Learn how sunscreen can help keep your skin protected."
 
                 // Only show the tip view on the current date
                 if Calendar.current.isDate(date, inSameDayAs: Date()) {
                     let tipView = TipView()
                     tipView.headerView.titleLabel.text = tipTitle
                     tipView.headerView.detailLabel.text = tipText
-                    tipView.imageView.image = UIImage(named: "exercise.jpg")
+                    tipView.imageView.image = UIImage(named: "exercise.png")
                     listViewController.appendView(tipView, animated: false)
                 }
 
@@ -108,16 +108,16 @@ class CareViewController: OCKDailyPageViewController {
 
                     // dynamic gradient colors
                     let nauseaGradientStart = UIColor { traitCollection -> UIColor in
-                        return traitCollection.userInterfaceStyle == .light ? #colorLiteral(red: 0.9960784314, green: 0.3725490196, blue: 0.368627451, alpha: 1) : #colorLiteral(red: 0.8627432641, green: 0.2630574384, blue: 0.2592858295, alpha: 1)
+                        return traitCollection.userInterfaceStyle == .light ? #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1) : #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
                     }
                     let nauseaGradientEnd = UIColor { traitCollection -> UIColor in
-                        return traitCollection.userInterfaceStyle == .light ? #colorLiteral(red: 0.9960784314, green: 0.4732026144, blue: 0.368627451, alpha: 1) : #colorLiteral(red: 0.8627432641, green: 0.3598620686, blue: 0.2592858295, alpha: 1)
+                        return traitCollection.userInterfaceStyle == .light ? #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1) : #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
                     }
 
                     // Create a plot comparing nausea to medication adherence.
                     let nauseaDataSeries = OCKDataSeriesConfiguration(
                         taskID: "nausea",
-                        legendTitle: "Nausea",
+                        legendTitle: "Flare Ups",
                         gradientStartColor: nauseaGradientStart,
                         gradientEndColor: nauseaGradientEnd,
                         markerSize: 10,
@@ -125,18 +125,22 @@ class CareViewController: OCKDailyPageViewController {
 
                     let doxylamineDataSeries = OCKDataSeriesConfiguration(
                         taskID: "doxylamine",
-                        legendTitle: "Doxylamine",
-                        gradientStartColor: .systemGray2,
-                        gradientEndColor: .systemGray,
+                        legendTitle: "Fluocinonide",
+                        gradientStartColor: UIColor { traitCollection -> UIColor in
+                            return traitCollection.userInterfaceStyle == .light ? #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1) : #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+                        },
+                        gradientEndColor: UIColor { traitCollection -> UIColor in
+                            return traitCollection.userInterfaceStyle == .light ? #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1) : #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+                        },
                         markerSize: 10,
                         eventAggregator: OCKEventAggregator.countOutcomeValues)
 
                     let insightsCard = OCKCartesianChartViewController(plotType: .bar, selectedDate: date,
                                                                        configurations: [nauseaDataSeries, doxylamineDataSeries],
                                                                        storeManager: self.storeManager)
-                    insightsCard.chartView.headerView.titleLabel.text = "Nausea & Doxylamine Intake"
+                    insightsCard.chartView.headerView.titleLabel.text = "Sunscreen & Topical Medicine Application"
                     insightsCard.chartView.headerView.detailLabel.text = "This Week"
-                    insightsCard.chartView.headerView.accessibilityLabel = "Nausea & Doxylamine Intake, This Week"
+                    insightsCard.chartView.headerView.accessibilityLabel = "Sunscreen & Topical Medicine Application, This Week"
                     listViewController.appendViewController(insightsCard, animated: false)
 
                     // Also create a card that displays a single event.
