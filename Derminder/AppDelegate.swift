@@ -85,7 +85,7 @@ private extension OCKStore {
         nausea.instructions = "Tap the button below anytime you experience a skin flare up."
 
         let kegelSchedule = OCKSchedule(composing: [OCKScheduleElement(start: beforeBreakfast, end: nil, interval: DateComponents(day: 2))])
-        var kegels = OCKTask(id: "kegels", title: "Apply Sunscreen", carePlanID: nil, schedule: kegelSchedule)
+        var kegels = OCKTask(id: "kegels", title: "Apply Sunscreen ☀️", carePlanID: nil, schedule: kegelSchedule)
         kegels.impactsAdherence = true
         kegels.instructions = "Perform kegel exercies"
 
