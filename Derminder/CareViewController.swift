@@ -141,7 +141,7 @@ class CareViewController: OCKDailyPageViewController {
                     insightsCard.chartView.headerView.titleLabel.text = "Sunscreen & Topical Medicine Application"
                     insightsCard.chartView.headerView.detailLabel.text = "This Week"
                     insightsCard.chartView.headerView.accessibilityLabel = "Sunscreen & Topical Medicine Application, This Week"
-                    listViewController.appendViewController(insightsCard, animated: false)
+                    
 
                     // Also create a card that displays a single event.
                     // The event query passed into the initializer specifies that only
@@ -149,6 +149,8 @@ class CareViewController: OCKDailyPageViewController {
                     let nauseaCard = OCKButtonLogTaskViewController(task: nauseaTask, eventQuery: .init(for: date),
                                                                     storeManager: self.storeManager)
                     listViewController.appendViewController(nauseaCard, animated: false)
+                    
+                    listViewController.appendViewController(insightsCard, animated: false)
                 }
             }
         }

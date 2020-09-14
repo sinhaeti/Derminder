@@ -60,7 +60,7 @@ private extension OCKStore {
         let thisMorning = Calendar.current.startOfDay(for: Date())
         let aFewDaysAgo = Calendar.current.date(byAdding: .day, value: -4, to: thisMorning)!
         let beforeBreakfast = Calendar.current.date(byAdding: .hour, value: 8, to: aFewDaysAgo)!
-        let afterLunch = Calendar.current.date(byAdding: .hour, value: 14, to: aFewDaysAgo)!
+        let afterLunch = Calendar.current.date(byAdding: .hour, value: 19, to: aFewDaysAgo)!
 
         let schedule = OCKSchedule(composing: [
             OCKScheduleElement(start: beforeBreakfast, end: nil,
